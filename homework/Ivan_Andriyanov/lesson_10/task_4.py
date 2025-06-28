@@ -7,6 +7,6 @@ PRICE_LIST = '''тетрадь 50р
 рюкзак 500р'''
 
 data = dict((line.split()[0], int(line.split()[1][:-1]))
-             for line in PRICE_LIST.splitlines())
+            for line in PRICE_LIST.splitlines())
 
 print(data)
