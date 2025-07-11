@@ -1,5 +1,5 @@
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime,timedelta
 import re
 
 
@@ -13,14 +13,12 @@ def read_file():
         for line in read_file:
             yield line
 
-
 def extract_datetime_from_line(line):
     match = re.search(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+", line)
     if match:
         date_str = match.group()
         return datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S.%f")
     return None
-
 
 def change_stings():
     for line in read_file():
@@ -47,6 +45,5 @@ def change_stings():
                 now_date = datetime.now()
                 result = now_date - format_day
                 print(f'{result.days} день назад была эта дата')
-
 
 change_stings()
