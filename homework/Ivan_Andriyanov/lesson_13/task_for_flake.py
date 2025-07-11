@@ -32,7 +32,7 @@ def change_stings():
                 new_date = format_date + timedelta(days=7)
                 print(
                     f"📅 Старая дата: {format_date}\n"
-                    f"✅ Новая дата (на 7 дней позже): {new_date}"
+                    f"✅ Новая дата (на 7 днейпозже): {new_date}"
                 )
 
         if clean_line.startswith('2'):
