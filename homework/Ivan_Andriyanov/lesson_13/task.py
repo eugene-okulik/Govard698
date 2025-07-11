@@ -1,6 +1,6 @@
 from pathlib import Path
-from datetime import datetime,timedelta
-import re
+from datetime import datetime
+from datetime import timedelta
 
 
 project_root = Path(__file__).parents[2]
