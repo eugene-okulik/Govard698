@@ -14,14 +14,12 @@ def read_file():
             yield line
 
 
-
 def extract_datetime_from_line(line):
     match = re.search(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+", line)
     if match:
         date_str = match.group()
         return datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S.%f")
     return None
-
 
 
 def change_stings():
