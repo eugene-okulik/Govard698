@@ -44,7 +44,7 @@ def change_stings():
             if format_day:
                 now_date = datetime.now()
                 result = now_date - format_date
-                print(f'{result.days} денб назад была эта дата')
+                print(f'{result.days} день назад была эта дата')
 
 
 change_stings()
