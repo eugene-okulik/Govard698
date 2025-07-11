@@ -1,8 +1,9 @@
 from pathlib import Path
 from datetime import datetime, timedelta
 import re
-project_root = Path(__file__).parents[2]
 
+
+project_root = Path(__file__).parents[2]
 data_path = project_root / 'eugene_okulik' / 'hw_13' / 'data.txt'
 
 
@@ -39,11 +40,12 @@ def change_stings():
             if format_day:
                 day_name = format_day.strftime("%A")
                 print(f'Вывели название дня недели:✅ {day_name}')
-        if clean_line.strip().startswith('3'):
+
+        if clean_line.startswith('3'):
             format_day = extract_datetime_from_line(line)
             if format_day:
                 now_date = datetime.now()
-                result = now_date - format_date
+                result = now_date - format_day
                 print(f'{result.days} день назад была эта дата')
 
 
