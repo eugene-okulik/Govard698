@@ -15,10 +15,10 @@ INSERT INTO lessons (title, subject_id) VALUES ('Rock', 11567), ('Rep', 11568)
 INSERT INTO marks (value, lesson_id, student_id) VALUES (5, 11592, 20838), (5, 11593, 20838)
 
 
-SELECT value from marks m JOIN students s ON m.student_id = s.id WHERE s.second_name = 'Andriyanov'
+SELECT value from marks m JOIN students s ON m.student_id = s.id WHERE s.id = '20838'
 
 
-SELECT title from books b JOIN students s ON s.id = b.taken_by_student_id Where s.second_name = 'Andriyanov'
+SELECT title from books b JOIN students s ON s.id = b.taken_by_student_id Where s.id = '20838'
 
 SELECT 
   g.title AS group_title,
@@ -32,4 +32,4 @@ JOIN books b ON b.taken_by_student_id = s.id
 JOIN marks m ON m.student_id = s.id
 JOIN lessons l ON l.id = m.lesson_id
 JOIN subjets sub ON l.subject_id = sub.id
-WHERE s.second_name = 'Andriyanov';
+WHERE s.id = '20838';
