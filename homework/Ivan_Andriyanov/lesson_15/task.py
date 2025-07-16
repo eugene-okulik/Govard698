@@ -66,13 +66,13 @@ db.commit()
 
 
 cursor.execute('SELECT value FROM marks WHERE student_id = %s', (student_id,))
-cursor.fetchall() 
+cursor.fetchall()
 
 cursor.execute('SELECT title FROM books WHERE taken_by_student_id = %s', (student_id,))
-cursor.fetchall() 
+cursor.fetchall()
 
 query_full = '''
-SELECT 
+SELECT
   g.title AS group_title,
   b.title AS book_title,
   m.value AS mark,
