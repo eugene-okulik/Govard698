@@ -35,33 +35,33 @@ values_add_group = (group_id, student_id)
 cursor.execute(query_add_student_for_group, values_add_group)
 db.commit()
 
+query_create_subject = 'INSERT INTO subjets (title) VALUES (%s)'
+subjects = ['music', 'cookie']
+subject_ids = []
 
-query_create_subject_1 = 'INSERT INTO subjets (title) VALUES (%s)'
-cursor.execute(query_create_subject_1, ('music',))
-db.commit()
-subject_id_1 = cursor.lastrowid
-
-query_create_subject_2 = 'INSERT INTO subjets (title) VALUES (%s)'
-cursor.execute(query_create_subject_2, ('cookie',))
-db.commit()
-subject_id_2 = cursor.lastrowid
-
-query_create_lesson_1 = 'INSERT INTO lessons (title, subject_id) VALUES (%s, %s)'
-cursor.execute(query_create_lesson_1, ('Rock', subject_id_1))
-db.commit()
-lesson_id_1 = cursor.lastrowid
-
-query_create_lesson_2 = 'INSERT INTO lessons (title, subject_id) VALUES (%s, %s)'
-cursor.execute(query_create_lesson_2, ('Rep', subject_id_2))
-db.commit()
-lesson_id_2 = cursor.lastrowid
-
-query_create_mark_1 = 'INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)'
-cursor.execute(query_create_mark_1, (5, lesson_id_1, student_id))
+for subject in subjects:
+    cursor.execute(query_create_subject, (subject,))
+    subject_ids.append(cursor.lastrowid)
 db.commit()
 
-query_create_mark_2 = 'INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)'
-cursor.execute(query_create_mark_2, (5, lesson_id_2, student_id))
+query_create_lesson = 'INSERT INTO lessons (title, subject_id) VALUES (%s, %s)'
+lessons = [('Rock', subject_ids[0]), ('Rep', subject_ids[1])]
+lesson_ids = []
+
+for title, subject_id in lessons:
+    cursor.execute(query_create_lesson, (title, subject_id))
+    lesson_ids.append(cursor.lastrowid)
+db.commit()
+
+lesson_id_1 = lesson_ids[0]
+lesson_id_2 = lesson_ids[1]
+
+query_create_marks = 'INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)'
+values_create_marks = [
+    (5, lesson_id_1, student_id),
+    (5, lesson_id_2, student_id)
+]
+cursor.executemany(query_create_marks, values_create_marks)
 db.commit()
 
 
