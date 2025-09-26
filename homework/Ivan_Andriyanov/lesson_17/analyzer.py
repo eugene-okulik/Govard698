@@ -1,4 +1,5 @@
-import argparse, os
+import argparse
+import os
 
 parser = argparse.ArgumentParser(description="Поиск текста в файлах")
 parser.add_argument("log_dir", help="путь к папке с логами")
@@ -22,6 +23,10 @@ for file_name in os.listdir(log_dir):
                             start = max(0, idx - 5)
                             end = min(len(words), idx + 6)
                             snippet = " ".join(words[start:end])
-                            print(f'[{file_name}] строка {line_number}: {snippet}')
+                            print(
+                                f'[{file_name}] '
+                                f'строка {line_number}: {snippet}'
+                            )
+
 print("holder: ", args.log_dir)
 print("Что ищем: ", args.text)
