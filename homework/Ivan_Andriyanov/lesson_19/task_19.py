@@ -4,7 +4,7 @@ import requests
 def all_request():
     response = requests.get(
         "http://objapi.course.qa-practice.com/object"
-        ).json()
+    ).json()
     assert response != {}, "response empty"
 
 
