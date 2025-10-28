@@ -20,7 +20,7 @@ def hello():
 
 # Фикстура, создающая и удаляющая объект для каждого теста
 @pytest.fixture()
-def new_post():
+def created_object():
     body = {
         "name": "ivanka",
         "data": {"group": 13121231},
@@ -65,24 +65,24 @@ def test_create_object(name):
 
 
 # 🔹 Тест на получение по id
-def test_get_post(new_post):
-    response = requests.get(f"http://objapi.course.qa-practice.com/object/{new_post}")
+def test_get_post(created_object):
+    response = requests.get(f"http://objapi.course.qa-practice.com/object/{created_object}")
     assert response.status_code == 200
     api_response = response.json()
     print(f"Get object id={api_response['id']}")
-    assert api_response["id"] == new_post, "ID not found"
+    assert api_response["id"] == created_object, "ID not found"
 
 
 # 🔹 Тест на изменение (помечен как medium)
 @pytest.mark.medium
-def test_put_post(new_post):
+def test_put_post(created_object):
     body = {
         "name": "andriyanov ivan",
         "data": {"group": "password test"},
     }
     headers = {"Content-Type": "application/json"}
     response = requests.put(
-        f"http://objapi.course.qa-practice.com/object/{new_post}",
+        f"http://objapi.course.qa-practice.com/object/{created_object}",
         json=body,
         headers=headers,
     )
@@ -96,14 +96,14 @@ def test_put_post(new_post):
 # 🔹 Тест на частичное изменение (помечен как critical)
 @pytest.mark.parametrize('name', ['alisa', 'lesha', 'luda'])
 @pytest.mark.critical
-def test_patch_post(new_post, name):
+def test_patch_post(created_object, name):
     body = {
         "name": name,
         "data": {"group": "312312123asdasd"},
     }
     headers = {"Content-Type": "application/json"}
     response = requests.patch(
-        f"http://objapi.course.qa-practice.com/object/{new_post}",
+        f"http://objapi.course.qa-practice.com/object/{created_object}",
         json=body,
         headers=headers,
     )
@@ -112,3 +112,12 @@ def test_patch_post(new_post, name):
     api_response = response.json()
     print(f"Имя обновилось на: {api_response['name']}")
     assert api_response["name"] == name, "name not found"
+
+
+def test_del_obj(created_object):
+    headers = {"Content-Type": "application/json"}
+    response = requests.delete(
+        f"http://objapi.course.qa-practice.com/object/{created_object}",
+        headers=headers,
+    )
+    assert response.status_code == 200
