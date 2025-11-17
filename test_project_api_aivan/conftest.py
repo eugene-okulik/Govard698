@@ -18,7 +18,7 @@ def fixt_create_new_post():
 
 
 @pytest.fixture()
-def fixt_post_id(fixt_create_new_post,fixt_delete_post):
+def fixt_post_id(fixt_create_new_post, fixt_delete_post):
     payload = {
         'name': 'ivan test get post id',
         'data': {'group': 'groups ivan andriyanov test post id'}
