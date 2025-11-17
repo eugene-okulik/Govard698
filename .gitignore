@@ -6,3 +6,5 @@ venv
 __pycache__
 credentials.py
 .env
+test_project_api_aivan/allure-report
+test_project_api_aivan/allure-results

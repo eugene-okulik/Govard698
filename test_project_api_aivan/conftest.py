@@ -18,13 +18,15 @@ def fixt_create_new_post():
 
 
 @pytest.fixture()
-def fixt_post_id(fixt_create_new_post):
+def fixt_post_id(fixt_create_new_post,fixt_delete_post):
     payload = {
         'name': 'ivan test get post id',
         'data': {'group': 'groups ivan andriyanov test post id'}
     }
     fixt_create_new_post.req_create_new_post(payload=payload)
-    yield fixt_create_new_post.post_id
+    post_id = fixt_create_new_post.post_id
+    yield post_id
+    fixt_delete_post.full_req_delete_post(post_id)
 
 
 @pytest.fixture()
