@@ -8,3 +8,13 @@ credentials.py
 .env
 test_project_api_aivan/allure-report
 test_project_api_aivan/allure-results
+.claude
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+.github/workflows/lint.yml
