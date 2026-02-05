@@ -1,5 +1,4 @@
 from playwright.sync_api import Page, expect
-from time import sleep
 
 
 def test_fill_form(page: Page):
@@ -7,11 +6,9 @@ def test_fill_form(page: Page):
     page.get_by_role("link", name="Form Authentication").click()
     user_name = page.get_by_role("textbox", name="username")
     user_name.fill("test_ivan")
-    sleep(1)
     password = page.get_by_role("textbox", name="password")
     password.fill("123456")
     page.get_by_role("button", name="Login").click()
-    sleep(3)
 
 
 def test_fill_form_two(page: Page):
@@ -45,4 +42,3 @@ def test_fill_form_two(page: Page):
     page.wait_for_selector('div[id*="react-select"][class*="option"]')
     select_city.press("Enter")
     page.locator("#submit").click()
-    sleep(5)
