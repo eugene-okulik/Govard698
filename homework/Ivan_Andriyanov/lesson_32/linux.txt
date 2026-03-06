@@ -1,0 +1,24 @@
+Задание 1. Часть 2. Управление в man
+
+Команды для навигации в программе man (получены через 'h' в самом man):
+- Go to first line in file: g
+- Go to last line in file: G
+- Forward one window: f (или Space, или Ctrl+F)
+- Forward one line: e (или Enter, или Ctrl+E, или j)
+- Backward one line: y (или Ctrl+Y, или k)
+- Search forward for matching line: /
+- Search backward for matching line: ?
+- Repeat previous search: n
+- Repeat previous search in reverse direction: N
+
+Задание 2. Определение типов файлов
+
+1. /dev/null -> Character device (символьное устройство) [c]
+2. /dev/zero -> Character device (символьное устройство) [c]
+3. /dev/sda -> Block device (блочное устройство) [b]
+4. /dev/tty -> Character device (символьное устройство) [c]
+5. /root -> Directory (директория) [d]
+6. /etc/passwd -> Regular file (обычный файл) [-]
+7. /proc/mounts -> Symbolic link (символическая ссылка) [l]
+8. /bin/ls -> Regular file (обычный файл) [-]
+9. /bin/zcat -> Regular file (обычный файл) [-]
